@@ -2,7 +2,7 @@ interface FormInputProps {
     label: string,
     name: string,
     type: string,
-    defaultValue: string
+    defaultValue?: string
 }
 
 const FormInput = ({ label, name, type, defaultValue}: FormInputProps) => {
