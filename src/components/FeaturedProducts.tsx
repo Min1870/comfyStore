@@ -1,10 +1,11 @@
-import { ProductsGrid, SectionTitle } from ".";
+import { SectionTitle } from ".";
+import ProductsGrid from "./ProductsGrid";
 
 const FeaturedProducts = () => {
   return (
     <div className="pt-24">
       <SectionTitle text="featured products" />
-      <ProductsGrid/>
+      <ProductsGrid />
     </div>
   );
 };

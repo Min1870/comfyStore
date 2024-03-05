@@ -1,4 +1,5 @@
-import { ProductsGrid, ProductsList } from ".";
+import  ProductsGrid  from "./ProductsGrid";
+import  ProductsList  from "./ProductsList";
 import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
 import { BsFillGridFill, BsList } from "react-icons/bs";

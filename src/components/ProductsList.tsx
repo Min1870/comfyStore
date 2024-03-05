@@ -4,7 +4,6 @@ import { ProductData } from "../interfaces";
 
 const ProductsList = () => {
   const { products } = useLoaderData() as { products: ProductData[] };
-  console.log(products);
   return (
     <div className="mt-12 grid gap-y-8">
       {products.map((product) => {

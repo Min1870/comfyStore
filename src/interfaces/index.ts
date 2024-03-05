@@ -22,3 +22,15 @@ export interface MetaData {
   categories: string[];
   companies: string[];
 }
+
+export interface LoaderData {
+  meta: MetaData;
+  params: {
+    search: string;
+    company: string;
+    category: string;
+    shipping: boolean;
+    order: string;
+    price: string;
+  };
+}
