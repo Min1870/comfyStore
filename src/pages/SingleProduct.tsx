@@ -3,19 +3,8 @@ import { formatPrice, customFetch, generateAmountOptions } from "../utils";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { LoaderFunction, LoaderFunctionArgs } from "react-router-dom";
+import { ProductData } from "../interfaces";
 
-interface ProductData {
-  attributes: {
-    image: string;
-    title: string;
-    price: number;
-    description: string;
-    colors: string[];
-    company: string;
-  };
-}
-
-// Adjust the loader function to match the expected signature
 export const loader: LoaderFunction = async ({
   params,
 }: LoaderFunctionArgs) => {
