@@ -34,3 +34,23 @@ export interface LoaderData {
     price: string;
   };
 }
+
+export type SingleProductType = {
+  cardId: string;
+  productId: number;
+  image: string;
+  title: string;
+  price: number;
+  company: string;
+  productColor: string;
+  amount: number;
+};
+
+export interface CartState {
+  cartItems: SingleProductType[]; // Specify the type of cartItems
+  numItemsInCart: number;
+  cartTotal: number;
+  shipping: number;
+  tax: number;
+  orderTotal: number;
+}

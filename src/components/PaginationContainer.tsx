@@ -3,9 +3,7 @@ import { LoaderData, MetaData } from "../interfaces";
 
 const PaginationContainer = () => {
   const { meta } = useLoaderData() as LoaderData;
-  console.log(meta);
   const { pageCount, page } = meta.pagination;
-  console.log(page);
 
   const pages = Array.from({ length: pageCount }, (_, index) => {
     return index + 1;

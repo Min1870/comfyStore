@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { LoaderFunction, LoaderFunctionArgs } from "react-router-dom";
 import { ProductData } from "../interfaces";
+import { useDispatch } from "react-redux";
+import { addItem } from "../features/cart/cartSlice";
 
 export const loader: LoaderFunction = async ({
   params,
@@ -24,6 +26,24 @@ const SingleProduct = () => {
   const handleAmount = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setAmount(parseInt(e.target.value));
   };
+
+  const cartProduct = {
+    cardId: product.id + productColor,
+    productId: product.id,
+    image,
+    title,
+    price,
+    company,
+    productColor,
+    amount,
+  };
+
+  const dispatch = useDispatch();
+
+  const addToCart = () => {
+    dispatch(addItem({ product: cartProduct }));
+  };
+
   return (
     <section>
       <div className=" text-md breadcrumbs">
@@ -85,10 +105,7 @@ const SingleProduct = () => {
             </select>
           </div>
           <div className="mt-10">
-            <button
-              className="btn btn-secondary btn-md"
-              onClick={() => console.log("added to cart")}
-            >
+            <button className="btn btn-secondary btn-md" onClick={addToCart}>
               Add to Cart
             </button>
           </div>
