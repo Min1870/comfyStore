@@ -1,4 +1,4 @@
-import { LoaderFunction, LoaderFunctionArgs } from "react-router-dom";
+import type { LoaderFunction, LoaderFunctionArgs } from "react-router-dom";
 import { Filter, PaginationContainer, ProductContainer } from "../components";
 import { customFetch } from "../utils";
 

@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { RootState } from "../store";
 
 const Cart = () => {
-  // temp
-  const user = null;
+
+  const user = useSelector((state: RootState) => state.userState.user);
   const numItemsInCart = useSelector(
     (state: RootState) => state.cartState.numItemsInCart
   );
