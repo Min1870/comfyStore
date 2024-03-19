@@ -10,7 +10,7 @@ const SubmitBtn = ({ text }: SubmitBtnProps) => {
   return (
     <button
       type="submit"
-      className="btn btn-primary btn-block"
+      className="btn btn-primary btn-block capitalize"
       disabled={isSubmitting}
     >
       {isSubmitting ? (
