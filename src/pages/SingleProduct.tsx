@@ -2,17 +2,26 @@ import { useLoaderData } from "react-router-dom";
 import { formatPrice, customFetch, generateAmountOptions } from "../utils";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
-import { LoaderFunction, LoaderFunctionArgs } from "react-router-dom";
+import type { LoaderFunctionArgs } from "react-router-dom";
 import { ProductData } from "../interfaces";
 import { useDispatch } from "react-redux";
 import { addItem } from "../features/cart/cartSlice";
 
-export const loader: LoaderFunction = async ({
-  params,
-}: LoaderFunctionArgs) => {
-  const response = await customFetch(`/products/${params.id}`);
-  return { product: response.data.data };
+const singleProductQuery = (id: any) => {
+  return {
+    queryKey: ["singleProduct", id],
+    queryFn: () => customFetch(`/products/${id}`),
+  };
 };
+
+export const loader: any =
+  (queryClient: any) =>
+  async ({ params }: LoaderFunctionArgs) => {
+    const response = await queryClient.ensureQueryData(
+      singleProductQuery(params.id)
+    );
+    return { product: response.data.data };
+  };
 
 const SingleProduct = () => {
   const { product } = useLoaderData() as { product: ProductData };

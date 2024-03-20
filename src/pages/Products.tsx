@@ -1,10 +1,10 @@
-import type { LoaderFunction, LoaderFunctionArgs } from "react-router-dom";
+import type { LoaderFunctionArgs } from "react-router-dom";
 import { Filter, PaginationContainer, ProductContainer } from "../components";
 import { customFetch } from "../utils";
 
 const url = "/products";
 
-export const loader: LoaderFunction = async ({
+export const loader: any = (queryClient: any) => async ({
   request,
 }: LoaderFunctionArgs) => {
   const params = Object.fromEntries([
