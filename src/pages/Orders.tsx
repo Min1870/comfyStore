@@ -1,4 +1,3 @@
-import React from "react";
 import { redirect, type LoaderFunctionArgs, useLoaderData } from "react-router";
 import { toast } from "react-toastify";
 import { customFetch } from "../utils";
@@ -8,6 +7,23 @@ import {
   SectionTitle,
 } from "../components";
 import { LoaderData } from "../interfaces";
+
+const ordersQuery = (params: any, user: any) => {
+  return {
+    queryKey: [
+      "orders",
+      user.username,
+      params.page ? parseInt(params.page) : 1,
+    ],
+    queryFn: () =>
+      customFetch.get("/orders", {
+        params,
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      }),
+  };
+};
 
 export const loader =
   (store: any, queryClient: any) =>
@@ -21,12 +37,9 @@ export const loader =
       ...new URL(request.url).searchParams.entries(),
     ]);
     try {
-      const response = await customFetch.get("/orders", {
-        params,
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
+      const response = await queryClient.ensureQueryData(
+        ordersQuery(params, user)
+      );
       return { orders: response.data.data, meta: response.data.meta };
     } catch (error: any) {
       console.log(error);
