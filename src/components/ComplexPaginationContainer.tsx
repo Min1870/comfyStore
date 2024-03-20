@@ -1,13 +1,9 @@
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
-import { LoaderData, MetaData } from "../interfaces";
+import { LoaderData } from "../interfaces";
 
 const ComplexPaginationContainer = () => {
   const { meta } = useLoaderData() as LoaderData;
   const { pageCount, page } = meta.pagination;
-
-  const pages = Array.from({ length: pageCount }, (_, index) => {
-    return index + 1;
-  });
 
   const { search, pathname } = useLocation();
   const navigate = useNavigate();
@@ -18,7 +14,7 @@ const ComplexPaginationContainer = () => {
     navigate(`${pathname}?${searchParams.toString()}`);
   };
 
-  const addPagebutton = ({ pageNumber, activeClass }: any) => {
+  const addPageButton = ({ pageNumber, activeClass }: any) => {
     return (
       <button
         onClick={() => handlePageChange(pageNumber.toString())}
@@ -35,7 +31,7 @@ const ComplexPaginationContainer = () => {
   const renderPageButton = () => {
     const pageButtons: any = [];
     // first button
-    pageButtons.push(addPagebutton({ pageNumber: 1, activeClass: page === 1 }));
+    pageButtons.push(addPageButton({ pageNumber: 1, activeClass: page === 1 }));
 
     // dots
     if (page > 2) {
@@ -48,7 +44,7 @@ const ComplexPaginationContainer = () => {
 
     // active/current page
     if (page !== 1 && page !== pageCount) {
-      pageButtons.push(addPagebutton({ pageNumber: page, activeClass: true }));
+      pageButtons.push(addPageButton({ pageNumber: page, activeClass: true }));
     }
 
     // dots
@@ -62,7 +58,7 @@ const ComplexPaginationContainer = () => {
 
     // last button
     pageButtons.push(
-      addPagebutton({ pageNumber: pageCount, activeClass: page === pageCount })
+      addPageButton({ pageNumber: pageCount, activeClass: page === pageCount })
     );
     return pageButtons;
   };

@@ -4,16 +4,19 @@ import { RootState, useAppDispatch } from "../store";
 import { useSelector } from "react-redux";
 import { clearCart } from "../features/cart/cartSlice";
 import { logoutUser } from "../features/user/userSlice";
+import { useQueryClient } from "@tanstack/react-query";
 
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const queryClient = useQueryClient();
   const user = useSelector((state: RootState) => state.userState.user);
 
   const handleLogout = () => {
     navigate("/");
     dispatch(clearCart());
     dispatch(logoutUser());
+    queryClient.removeQueries();
   };
 
   return (
