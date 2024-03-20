@@ -1,4 +1,3 @@
-import { UseSelector } from "react-redux/es/hooks/useSelector";
 import { formatPrice } from "../utils";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";

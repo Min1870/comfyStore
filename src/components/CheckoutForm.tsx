@@ -23,7 +23,7 @@ export const action =
       numItemsInCart,
     };
     try {
-      const response = await customFetch.post(
+      await customFetch.post(
         "./orders",
         { data: info },
         {
@@ -32,7 +32,7 @@ export const action =
           },
         }
       );
-      queryClient.removeQueries(['orders']);
+      queryClient.removeQueries(["orders"]);
       store.dispatch(clearCart());
       toast.success("order placed successfully");
       return redirect("/orders");

@@ -1,5 +1,5 @@
 import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
-import { LoaderData, MetaData } from "../interfaces";
+import { LoaderData } from "../interfaces";
 
 const PaginationContainer = () => {
   const { meta } = useLoaderData() as LoaderData;
